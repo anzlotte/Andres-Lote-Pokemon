@@ -4,6 +4,7 @@ import '@bbva-web-components/bbva-foundations-grid-tools-layout/bbva-foundations
 import '@bbva-web-components/bbva-button-default/bbva-button-default.js';
 import '@bbva-web-components/bbva-core-collapse/bbva-core-collapse.js';
 import styles from './pokemon-ui.css.js';
+import '@pokeEvolucion/pokemon-dm/pokemon-dm.js'
 
 
 export class PokemonUi extends LitElement {
@@ -22,7 +23,7 @@ export class PokemonUi extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.obtenerPokemones(); 
+    //this.obtenerPokemones(); 
   }
 
   static get styles() {
@@ -46,10 +47,16 @@ export class PokemonUi extends LitElement {
     this.pokemones = [];
     await this.obtenerPokemones();
   }
+
+  async firstUpdated(){
+    const pokemonDm = this.shadowRoot.querySelector('pokemon-dm');
+    this.pokemones = await pokemonDm.obtenerPokemones();
+    console.log('Pokemones',this.pokemones);
+  }
   /**Consumir API */
 
   // Función para obtener los Pokémon
-  async obtenerPokemones() {
+  /*async obtenerPokemones() {
 
     const url = 'https://pokeapi.co/api/v2/evolution-chain?limit=6';
 
@@ -124,7 +131,7 @@ export class PokemonUi extends LitElement {
     } catch (error) {
       console.error('Error al obtener los datos:', error);
     }
-  }
+  }*/
 
   render() {
     return html`
@@ -158,6 +165,7 @@ export class PokemonUi extends LitElement {
           ` : ''}
         </div>
       </bbva-foundations-grid-tools-layout>
+      <pokemon-dm></pokemon-dm>
     `;
   }
 

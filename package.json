@@ -24,6 +24,7 @@
     "@bbva-web-components/bbva-core-lit-helpers": "^1.0.0",
     "@bbva-web-components/bbva-foundations-grid-tools-layout": "^1.0.4",
     "@bbva-web-components/bbva-foundations-styles": "^2.0.0",
+    "@pokeEvolucion/pokemon-dm":"https://github.com/anzlotte/pokemon-dm.git#master",
     "lit-element": "^2.0.0",
     "lit-html": "^1.0.0"
   },
